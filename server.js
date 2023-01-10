@@ -10,8 +10,8 @@ app.use(express.json());
 app.use("/auth", authRouter)
 app.get('/', (req,res) => res.send('Hello'))
 
-const PORT= 8080;
+const PORT = process.env.PORT || 8000;
 
-app.listen(process.env.PORT, async() => {
+app.listen(PORT, async() => {
     await connection;
-    console.log('Server started on http://localhost:8080')})
+    console.log(`Server started on ${PORT}`)})
