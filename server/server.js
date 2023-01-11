@@ -1,15 +1,15 @@
 const express = require("express");
 const connection = require("./db/db.js");
 const Router = require("./routes/routers");
-const cors= require("cors");
+const cors = require("cors");
 require("dotenv").config();
 const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3001"]
+    origin: ["http://localhost:3001"],
   })
-)
+);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

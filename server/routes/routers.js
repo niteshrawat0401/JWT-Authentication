@@ -7,8 +7,6 @@ routes.post("/signup", controller.signupUser);
 routes.post("/login", controller.loginUser);
 routes.get("/user/:id", controller.getUser);
 routes.patch("/edit/:id", controller.editUser);
-routes.delete("/del/:id", controller.deleteUser);
+routes.delete("/delete/:id", controller.deleteUser);
 
 module.exports = routes;
-
-// authRouter.post("/create", authenticateToken, createPost )
