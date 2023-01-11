@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 let init = {
   userName: "",
@@ -8,25 +9,28 @@ let init = {
 };
 
 export const Login = () => {
-  const [login, setlogindata] = useState(init);
+  const [login, setlogin] = useState(init);
 
-  const handleChange=(e)=>{
-    const {name, value}= e.target;
-    setlogindata({ ...login, [name]: value});
-  }
-    // const handleLogin = (e) => {
-    //   e.preventDefault();
-    //   axios
-    //     .post("http://localhost:8080/auth/signup", signup)
-    //     .then(() => {
-    //       console.log(signup);
-    //       navigate("/login");
-    //     })
-    //     .catch((err) => {
-    //       alert("Something went wrong");
-    //       console.log("error", err);
-    //     });
-    // };
+  const handleChanged = (e) => {
+    const { name, value } = e.target;
+    setlogin({ ...login, [name]: value });
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:8080/auth/login", login)
+      .then((res) => {
+        console.log(res.data);
+        setlogin(res.data);
+        setlogin({ ...init });
+        alert("Login sucessfully");
+      })
+      .catch((err) => {
+        alert("Something went wrong");
+        console.log("error", err);
+      });
+  };
   return (
     <div>
       <h2>Login User</h2>
@@ -35,7 +39,8 @@ export const Login = () => {
           type="text"
           name="userName"
           placeholder="UserName"
-          onChange={handleChange}
+          onChange={handleChanged}
+          value={login.userName}
           required
         />
         <br />
@@ -43,7 +48,8 @@ export const Login = () => {
           type="password"
           name="passWord"
           placeholder="PassWord"
-          onChange={handleChange}
+          onChange={handleChanged}
+          value={login.passWord}
           required
         />
         <br />
