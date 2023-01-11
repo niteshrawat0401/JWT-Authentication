@@ -5,7 +5,7 @@ const routes = Router();
 
 routes.post("/signup", controller.signupUser);
 routes.post("/login", controller.loginUser);
-// routes.get("/user/:id", controller.getUser);
+routes.get("/user/:id", controller.getUser);
 // routes.patch("/edit/:id", controller.edit);
 routes.delete("/del/:id", controller.deleteUser);
 

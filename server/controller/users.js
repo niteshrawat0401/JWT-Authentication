@@ -60,6 +60,20 @@ exports.loginUser = async (req, res) => {
   }
 };
 
+// Getuser
+exports.getUser = async (req, res) => {
+  const { id } = req.params;
+  const user = await Users.find({ id });
+  try {
+    if (user) {
+      return res.status(201).send({ msg: "get user sucessfully", user });
+    }
+    return res.status(400).send({msg: "Somthing wrong"})
+  } catch (error) {
+    return res.status(500).send({msg: "Error with getting user"});
+  }
+};
+
 
 // Deleteuser
 exports.deleteUser = async (req, res) => {
