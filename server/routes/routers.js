@@ -6,7 +6,7 @@ const routes = Router();
 routes.post("/signup", controller.signupUser);
 routes.post("/login", controller.loginUser);
 routes.get("/user/:id", controller.getUser);
-// routes.patch("/edit/:id", controller.edit);
+routes.patch("/edit/:id", controller.editUser);
 routes.delete("/del/:id", controller.deleteUser);
 
 module.exports = routes;

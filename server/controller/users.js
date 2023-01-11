@@ -68,12 +68,26 @@ exports.getUser = async (req, res) => {
     if (user) {
       return res.status(201).send({ msg: "get user sucessfully", user });
     }
-    return res.status(400).send({msg: "Somthing wrong"})
+    return res.status(400).send({ msg: "Somthing wrong" });
   } catch (error) {
-    return res.status(500).send({msg: "Error with getting user"});
+    return res.status(500).send({ msg: "Error with getting user" });
   }
 };
 
+// Edituser
+exports.editUser = async (req, res) => {
+  const { id } = req.params;
+  const payload = req.body;
+  const user = await Users.findByIdAndUpdate({ _id: id }, payload);
+  try {
+    if (user) {
+      return res.status(201).send({ msg: "User edit sucessfully", user });
+    }
+    return res.status(400).send({ msg: "wrong with edit user" });
+  } catch (error) {
+    return res.status(500).send({ msg: "Error occured" });
+  }
+};
 
 // Deleteuser
 exports.deleteUser = async (req, res) => {
