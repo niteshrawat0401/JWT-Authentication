@@ -62,8 +62,8 @@ exports.loginUser = async (req, res) => {
 
 // Getuser
 exports.getUser = async (req, res) => {
-  const { id } = req.params;
-  const user = await Users.find({ id });
+  // const { id } = req.params;
+  const user = await Users.find({});
   try {
     if (user) {
       return res.status(201).send({ msg: "get user sucessfully", user });
